@@ -1,5 +1,6 @@
 package kerberos.spring.management.controller;
 
+import kerberos.spring.management.controller.exception.UserNotFoundException;
 import kerberos.spring.management.entity.User;
 import kerberos.spring.management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,9 @@ public class UserController {
 */
 
     @GetMapping("/user/{userId}")
-    public Optional<User> getCustomerById(@PathVariable final Long userId) {
-        return userService.getUserById(userId);
+    public User getCustomerById(@PathVariable final Long userId) {
+        return userService.getUserById(userId)
+                .orElseThrow(UserNotFoundException::new);
     }
 
 

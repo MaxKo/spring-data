@@ -19,10 +19,12 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 //@ContextConfiguration(classes = {ClientConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class RestClientLiveTest {
 
+    final String uri = "http://localhost:8080/api";
+
     @Test
     public void whenUsersApiIsUp_then200OK() throws IOException {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        HttpGet getMethod = new HttpGet("http://localhost:8080/api/users");
+        HttpGet getMethod = new HttpGet(uri + "/users");
         HttpResponse response = httpClient.execute(getMethod);
         System.out.println("HTTP Status of response: " + response.getStatusLine().getStatusCode());
 
@@ -32,7 +34,7 @@ public class RestClientLiveTest {
     @Test
     public void whenAddressApiIsUp_then200OK() throws IOException {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        HttpGet getMethod = new HttpGet("http://localhost:8080/api/addresses?userId=1");
+        HttpGet getMethod = new HttpGet( uri + "/addresses?userId=1");
         HttpResponse response = httpClient.execute(getMethod);
         System.out.println("HTTP Status of response: " + response.getStatusLine().getStatusCode());
 

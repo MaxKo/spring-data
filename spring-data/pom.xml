@@ -22,7 +22,7 @@
                 <scope>import</scope>
                 <version>2.2.0.RELEASE</version>
             </dependency>
-       </dependencies>
+        </dependencies>
     </dependencyManagement>
 
 

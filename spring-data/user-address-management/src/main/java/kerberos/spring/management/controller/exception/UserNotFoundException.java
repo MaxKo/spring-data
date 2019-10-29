@@ -1,4 +1,4 @@
-package kerberos.spring.management.controller.exception.handler;
+package kerberos.spring.management.controller.exception;
 
 public class UserNotFoundException extends RuntimeException {
 

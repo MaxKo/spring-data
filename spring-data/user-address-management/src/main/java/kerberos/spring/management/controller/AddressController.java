@@ -1,6 +1,7 @@
 package kerberos.spring.management.controller;
 
 import kerberos.spring.management.application.UserAddressManagementApplication;
+import kerberos.spring.management.controller.exception.UserNotFoundException;
 import kerberos.spring.management.entity.Address;
 import kerberos.spring.management.entity.User;
 import kerberos.spring.management.service.AddressService;
@@ -20,6 +21,9 @@ public class AddressController {
     @Autowired(required = true)
     private AddressService addressService;
 
+    @Autowired(required = true)
+    private UserService userService;
+
     @GetMapping("/address/{addressId}")
     public Optional<Address> getAddressById(@PathVariable final Long addressId) {
         return addressService.getAddressById(addressId);
@@ -28,11 +32,9 @@ public class AddressController {
     @GetMapping("/addresses")
     public List<Address> getAddressesByUserId(@RequestParam(value = "userId") Long userId) {
         logger.debug("getAddressesbyId: " + userId);
+
+        userService.getUserById(userId).orElseThrow(UserNotFoundException::new);
+
         return addressService.getAddressesByUserId(userId);
     }
-    /*
-    @GetMapping("/addresses")
-    public Iterable<Address> getAllUsers() {
-        return addressService.getAllAddresses();
-    }*/
 }
