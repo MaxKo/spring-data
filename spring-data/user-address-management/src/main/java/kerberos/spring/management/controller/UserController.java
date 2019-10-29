@@ -5,6 +5,7 @@ import kerberos.spring.management.entity.User;
 import kerberos.spring.management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,9 +34,23 @@ public class UserController {
 
 
 
-    @GetMapping("/users")
+    @GetMapping(value = "/users",  produces = "application/json; charset=UTF-8")
     public Iterable<User>  getAllUsers() {
         return userService.getAllUsers();
+    }
+
+
+    @PostMapping("/user")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User delete(@RequestBody User user) {
+        User user1 = userService.save(user);
+        return user1;
+    }
+
+    @DeleteMapping("/user")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void create(@RequestBody User user) {
+        userService.delete(user);
     }
 
 

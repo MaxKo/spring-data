@@ -35,7 +35,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .getLocalizedMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
-    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    @ExceptionHandler(NumberFormatException.class)
     public ResponseEntity<Object> handleBadRequestParameter(Exception ex, WebRequest request) {
         return handleExceptionInternal(ex, "Wrong parameter type: " + ex
                 .getLocalizedMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
