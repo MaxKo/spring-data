@@ -29,8 +29,6 @@ public class UserAddressManagementApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(UserAddressManagementApplication.class, args);
-
-        System.out.println("test ok bar" );
     }
 
     @Bean
@@ -51,15 +49,13 @@ public class UserAddressManagementApplication {
                                             Locale.getISOCountries()[new Random().nextInt(Locale.getISOCountries().length)])
                                             .getDisplayCountry()
                             );
-                            //address.setUser(user);
+                            address.setUser(user);
                             user.getAddresses().add(address);
                         });
                 userRepository.save(user);
             });
 
             logger.debug(userRepository.findAll());
-            //userRepository.findAll().forEach(System.out::println);
-            //addressRepository.findAll().forEach(System.out::println);
         };
     }
 

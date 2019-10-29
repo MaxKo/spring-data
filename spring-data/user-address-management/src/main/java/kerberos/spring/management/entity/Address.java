@@ -9,11 +9,9 @@ import javax.persistence.*;
 @Entity
 @Table(name="Addresses")
 public class Address {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
 
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
