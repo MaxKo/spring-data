@@ -42,14 +42,14 @@ public class UserController {
 
     @PostMapping("/user")
     @ResponseStatus(HttpStatus.CREATED)
-    public User delete(@RequestBody User user) {
+    public User create(@RequestBody User user) {
         User user1 = userService.save(user);
         return user1;
     }
 
     @DeleteMapping("/user")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void create(@RequestBody User user) {
+    public void delete(@RequestBody User user) {
         userService.delete(user);
     }
 
