@@ -1,12 +1,13 @@
 package kerberos.spring.management.controller;
 
+import kerberos.spring.management.entity.User;
 import kerberos.spring.management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -23,9 +24,16 @@ public class UserController {
     }
 */
 
+    @GetMapping("/user/{userId}")
+    public Optional<User> getCustomerById(@PathVariable final Long userId) {
+        return userService.getUserById(userId);
+    }
+
+
+
     @GetMapping("/users")
-    public String getAllUsers() {
-        return userService.getAllUsers().toString();
+    public Iterable<User>  getAllUsers() {
+        return userService.getAllUsers();
     }
 
 
