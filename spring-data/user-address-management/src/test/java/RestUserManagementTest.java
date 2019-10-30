@@ -1,5 +1,8 @@
 import io.restassured.parsing.Parser;
+import kerberos.spring.management.application.UserAddressManagementApplication;
 import kerberos.spring.management.entity.User;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 //import org.apache.http.HttpStatus;
 import org.junit.Test;
@@ -10,9 +13,13 @@ import static org.junit.Assert.assertTrue;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = { UserAddressManagementApplication.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class RestUserManagementTest {
     public static final String API_ROOT = RestClientLiveTest.API_ROOT;
 

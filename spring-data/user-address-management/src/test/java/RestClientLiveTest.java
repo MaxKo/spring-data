@@ -1,7 +1,10 @@
+import kerberos.spring.management.application.UserAddressManagementApplication;
 import org.junit.Assert;
 //import org.springframework.http.HttpStatus;
 
 import org.apache.http.HttpStatus;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.io.IOException;
 
@@ -15,6 +18,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(classes = {ClientConfig.class}, loader = AnnotationConfigContextLoader.class)
+//@WebIntegrationTest(randomPort=true)
+//@SpringApplicationConfiguration(UserAddressManagementApplication.class)
+@SpringBootTest(classes = { UserAddressManagementApplication.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+
 public class RestClientLiveTest {
     public static final String ROOT = "http://localhost:8080/";
     public static final String API_ROOT = ROOT + "api";

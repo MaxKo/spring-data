@@ -18,27 +18,16 @@ public class UserController {
     @Autowired(required = true)
     private UserService userService;
 
-/*
-    @GetMapping("/users")
-    public String getAllUsers(@RequestParam(value = "key") String key) {
-        //return userService.getAllUsers().toString();
-        return "sss";
-    }
-*/
-
     @GetMapping("/user/{userId}")
     public User getCustomerById(@PathVariable final Long userId) {
         return userService.getUserById(userId)
                 .orElseThrow(UserNotFoundException::new);
     }
 
-
-
     @GetMapping(value = "/users",  produces = "application/json; charset=UTF-8")
     public Iterable<User>  getAllUsers() {
         return userService.getAllUsers();
     }
-
 
     @PostMapping("/user")
     @ResponseStatus(HttpStatus.CREATED)
@@ -52,6 +41,4 @@ public class UserController {
     public void delete(@RequestBody User user) {
         userService.delete(user);
     }
-
-
 }
