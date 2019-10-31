@@ -28,6 +28,11 @@ public class User {
         this.username = name;
     }
 
+    public User(long id, String username) {
+        this.username = username;
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         String result = "User [id="  + id +  ", username=" + username;
