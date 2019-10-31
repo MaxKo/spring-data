@@ -1,9 +1,8 @@
-import kerberos.spring.management.application.UserAddressManagementApplication;
+import kerberos.spring.management.UserAddressManagementApplication;
 import org.junit.Assert;
 //import org.springframework.http.HttpStatus;
 
 import org.apache.http.HttpStatus;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.io.IOException;

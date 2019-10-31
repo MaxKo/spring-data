@@ -1,9 +1,7 @@
 package kerberos.spring.management.controller;
 
-import kerberos.spring.management.application.UserAddressManagementApplication;
 import kerberos.spring.management.controller.exception.UserNotFoundException;
 import kerberos.spring.management.entity.Address;
-import kerberos.spring.management.entity.User;
 import kerberos.spring.management.service.AddressService;
 import kerberos.spring.management.service.UserService;
 import org.apache.log4j.Logger;

@@ -1,5 +1,5 @@
 import io.restassured.parsing.Parser;
-import kerberos.spring.management.application.UserAddressManagementApplication;
+import kerberos.spring.management.UserAddressManagementApplication;
 import kerberos.spring.management.entity.User;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

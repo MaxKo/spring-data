@@ -1,4 +1,4 @@
-package kerberos.spring.management.application;
+package kerberos.spring.management;
 
 import kerberos.spring.management.repository.UserRepository;
 import kerberos.spring.management.entity.Address;
@@ -18,9 +18,6 @@ import java.util.Random;
 import java.util.stream.Stream;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "kerberos.spring.management")
-@EnableJpaRepositories("kerberos.spring.management.repository")
-@EntityScan("kerberos.spring.management.entity")
 public class UserAddressManagementApplication {
     final static Logger logger = Logger.getLogger(UserAddressManagementApplication.class);
 
