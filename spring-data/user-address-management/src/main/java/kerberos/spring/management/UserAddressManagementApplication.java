@@ -30,6 +30,8 @@ public class UserAddressManagementApplication {
 
     @Bean
     CommandLineRunner init(UserRepository userRepository) {
+        if (userRepository.findAll().size() > 0) return args -> {};
+
         return args -> {
             Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
 
