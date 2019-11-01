@@ -1,15 +1,13 @@
 package kerberos.spring.management.controller;
 
 import kerberos.spring.management.controller.exception.UserNotFoundException;
+import kerberos.spring.management.dto.UserDto;
 import kerberos.spring.management.entity.User;
 import kerberos.spring.management.service.UserService;
+import ma.glasnost.orika.MapperFacade;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -18,14 +16,22 @@ public class UserController {
     @Autowired(required = true)
     private UserService userService;
 
+    @Autowired(required = true)
+    private MapperFacade mapper;
+
     @GetMapping("/user/{userId}")
-    public User getCustomerById(@PathVariable final Long userId) {
-        return userService.getUserById(userId)
+    public UserDto getCustomerById(@PathVariable final Long userId) {
+        User user = userService.getUserById(userId)
                 .orElseThrow(UserNotFoundException::new);
+
+        UserDto userDto = mapper.map(user, UserDto.class);
+
+        return  userDto;
     }
 
     @GetMapping(value = "/users",  produces = "application/json; charset=UTF-8")
     public Iterable<User>  getAllUsers() {
+
         return userService.getAllUsers();
     }
 

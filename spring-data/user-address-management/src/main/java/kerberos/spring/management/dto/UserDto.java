@@ -1,5 +1,6 @@
 package kerberos.spring.management.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDto {
@@ -7,7 +8,7 @@ public class UserDto {
 
     private String username;
 
-    private List<AddressDto> addresses;
+    private List<AddressDto> addresses = new ArrayList<AddressDto>();
 
     public UserDto() {}
 
@@ -32,4 +33,11 @@ public class UserDto {
         this.username = username;
     }
 
+    public List<AddressDto> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<AddressDto> addresses) {
+        this.addresses = addresses;
+    }
 }

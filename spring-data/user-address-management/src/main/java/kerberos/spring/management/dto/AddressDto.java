@@ -15,6 +15,11 @@ public class AddressDto {
         this.country = country;
     }
 
+    public AddressDto(String address, String country) {
+        this.address = address;
+        this.country = country;
+    }
+
     public UserDto getUser() {
         return user;
     }
