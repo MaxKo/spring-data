@@ -1,4 +1,4 @@
-package kerberos.spring.management.mapper;
+package kerberos.spring.management.applicaion.config;
 
 import kerberos.spring.management.dto.AddressDto;
 import kerberos.spring.management.dto.UserDto;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AddressFacadeMapper {
+class AddressFacadeMapper {
 
     private MapperFactory mapperFactory;
 
