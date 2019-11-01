@@ -18,7 +18,7 @@ public class User {
     private Long id;
     private String username;
 
-    @JsonManagedReference
+   // @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private List<Address> addresses = new ArrayList<Address>();

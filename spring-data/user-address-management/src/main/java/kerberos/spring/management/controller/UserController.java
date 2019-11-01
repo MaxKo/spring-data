@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -30,9 +33,12 @@ public class UserController {
     }
 
     @GetMapping(value = "/users",  produces = "application/json; charset=UTF-8")
-    public Iterable<User>  getAllUsers() {
+    public Iterable<UserDto>  getAllUsers() {
+        List<UserDto> result = new ArrayList<UserDto>();
 
-        return userService.getAllUsers();
+        mapper.mapAsCollection(userService.getAllUsers(), result, UserDto.class);
+
+        return result;
     }
 
     @PostMapping("/user")

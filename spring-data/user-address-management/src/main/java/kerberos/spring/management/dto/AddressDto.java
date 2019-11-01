@@ -1,6 +1,10 @@
 package kerberos.spring.management.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class AddressDto {
+
+    @JsonBackReference
     private UserDto user;
 
     private String address;

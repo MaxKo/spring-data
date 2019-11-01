@@ -1,13 +1,15 @@
 package kerberos.spring.management.dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDto {
     private Long id;
-
     private String username;
 
+    @JsonManagedReference
     private List<AddressDto> addresses = new ArrayList<AddressDto>();
 
     public UserDto() {}
