@@ -6,6 +6,7 @@ import kerberos.spring.management.entity.User;
 import kerberos.spring.management.service.UserService;
 import ma.glasnost.orika.MapperFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired(required = true)
+    @Qualifier("user")
     private MapperFacade mapper;
 
     @GetMapping("/user/{userId}")
@@ -43,14 +45,22 @@ public class UserController {
 
     @PostMapping("/user")
     @ResponseStatus(HttpStatus.CREATED)
-    public User create(@RequestBody User user) {
-        User user1 = userService.save(user);
-        return user1;
+    public UserDto create(@RequestBody UserDto userDto) {
+        User user = mapper.map(userDto, User.class);
+
+        User savedUser = userService.save(user);
+
+        UserDto savedDtoUser = mapper.map(savedUser, UserDto.class);
+
+        return savedDtoUser;
     }
 
     @DeleteMapping("/user")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@RequestBody User user) {
+    public void delete(@RequestBody UserDto userDto) {
+
+        User user = mapper.map(userDto, User.class);
+
         userService.delete(user);
     }
 }

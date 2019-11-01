@@ -1,13 +1,17 @@
 package kerberos.spring.management.controller;
 
 import kerberos.spring.management.controller.exception.UserNotFoundException;
+import kerberos.spring.management.dto.AddressDto;
 import kerberos.spring.management.entity.Address;
 import kerberos.spring.management.service.AddressService;
 import kerberos.spring.management.service.UserService;
+import ma.glasnost.orika.MapperFacade;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,17 +26,29 @@ public class AddressController {
     @Autowired(required = true)
     private UserService userService;
 
+    @Autowired
+    @Qualifier("address")
+    private MapperFacade mapper;
+
     @GetMapping("/address/{addressId}")
-    public Optional<Address> getAddressById(@PathVariable final Long addressId) {
-        return addressService.getAddressById(addressId);
+    public AddressDto getAddressById(@PathVariable final Long addressId) {
+        Optional<Address> addressOptional = addressService.getAddressById(addressId);
+
+        AddressDto result = mapper.map(addressOptional.get(), AddressDto.class);
+
+        return result;
     }
 
     @GetMapping("/addresses")
-    public List<Address> getAddressesByUserId(@RequestParam(value = "userId") Long userId) {
-        logger.debug("getAddressesbyId: " + userId);
-
+    public List<AddressDto> getAddressesByUserId(@RequestParam(value = "userId") Long userId) {
         userService.getUserById(userId).orElseThrow(UserNotFoundException::new);
 
-        return addressService.getAddressesByUserId(userId);
+        List<Address> addresses = addressService.getAddressesByUserId(userId);
+
+        List<AddressDto> result = new ArrayList<AddressDto>();
+
+        mapper.mapAsCollection(addresses, result, AddressDto.class);
+
+        return result;
     }
 }
