@@ -1,20 +1,22 @@
 package kerberos.spring.management.controller.exception;
 
-public class UserNotFoundException extends RuntimeException {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
+public class UserNotFoundException extends ResponseStatusException {
     public UserNotFoundException() {
-        super();
+        super(HttpStatus.NOT_FOUND);
     }
 
-    public UserNotFoundException(final String message, final Throwable cause) {
-        super(message, cause);
+    public UserNotFoundException(HttpStatus status) {
+        super(status);
     }
 
-    public UserNotFoundException(final String message) {
-        super(message);
+    public UserNotFoundException(HttpStatus status, String reason) {
+        super(status, reason);
     }
 
-    public UserNotFoundException(final Throwable cause) {
-        super(cause);
+    public UserNotFoundException(HttpStatus status, String reason, Throwable cause) {
+        super(status, reason, cause);
     }
 }

@@ -1,5 +1,6 @@
 package kerberos.spring.management.controller;
 
+import kerberos.spring.management.applicaion.config.JsonSerializer;
 import kerberos.spring.management.controller.exception.UserNotFoundException;
 import kerberos.spring.management.dto.AddressDto;
 import kerberos.spring.management.entity.Address;
@@ -9,6 +10,7 @@ import ma.glasnost.orika.MapperFacade;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -30,17 +32,20 @@ public class AddressController {
     @Qualifier("address")
     private MapperFacade mapper;
 
+    @Autowired(required = true)
+    private JsonSerializer js;
+
     @GetMapping("/address/{addressId}")
-    public AddressDto getAddressById(@PathVariable final Long addressId) {
+    public ResponseEntity<String> getAddressById(@PathVariable final Long addressId) {
         Optional<Address> addressOptional = addressService.getAddressById(addressId);
 
         AddressDto result = mapper.map(addressOptional.get(), AddressDto.class);
 
-        return result;
+        return ResponseEntity.ok(js.toJson(result));
     }
 
     @GetMapping("/addresses")
-    public List<AddressDto> getAddressesByUserId(@RequestParam(value = "userId") Long userId) {
+    public ResponseEntity<String> getAddressesByUserId(@RequestParam(value = "userId") Long userId) {
         userService.getUserById(userId).orElseThrow(UserNotFoundException::new);
 
         List<Address> addresses = addressService.getAddressesByUserId(userId);
@@ -49,6 +54,6 @@ public class AddressController {
 
         mapper.mapAsCollection(addresses, result, AddressDto.class);
 
-        return result;
+        return ResponseEntity.ok(js.toJson(result));
     }
 }

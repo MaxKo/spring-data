@@ -1,5 +1,7 @@
 package kerberos.spring.management.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import kerberos.spring.management.applicaion.config.JsonSerializer;
 import kerberos.spring.management.controller.exception.UserNotFoundException;
 import kerberos.spring.management.dto.UserDto;
 import kerberos.spring.management.entity.User;
@@ -8,6 +10,7 @@ import ma.glasnost.orika.MapperFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -24,41 +27,42 @@ public class UserController {
     @Qualifier("user")
     private MapperFacade mapper;
 
+    @Autowired(required = true)
+    private JsonSerializer js;
+
     @GetMapping("/user/{userId}")
-    public UserDto getCustomerById(@PathVariable final Long userId) {
+    public ResponseEntity<String> getCustomerById(@PathVariable final Long userId) throws JsonProcessingException {
         User user = userService.getUserById(userId)
                 .orElseThrow(UserNotFoundException::new);
 
         UserDto userDto = mapper.map(user, UserDto.class);
 
-        return  userDto;
+        return ResponseEntity.ok(js.toJson(userDto));
     }
 
     @GetMapping(value = "/users",  produces = "application/json; charset=UTF-8")
-    public Iterable<UserDto>  getAllUsers() {
+    public ResponseEntity<String>  getAllUsers() throws JsonProcessingException {
         List<UserDto> result = new ArrayList<UserDto>();
 
         mapper.mapAsCollection(userService.getAllUsers(), result, UserDto.class);
 
-        return result;
+        return ResponseEntity.ok(js.toJson(result));
     }
 
     @PostMapping("/user")
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserDto create(@RequestBody UserDto userDto) {
+    public ResponseEntity<String> create(@RequestBody UserDto userDto) {
         User user = mapper.map(userDto, User.class);
 
         User savedUser = userService.save(user);
 
         UserDto savedDtoUser = mapper.map(savedUser, UserDto.class);
 
-        return savedDtoUser;
+        return new ResponseEntity (js.toJson(savedDtoUser), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/user")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@RequestBody UserDto userDto) {
-
         User user = mapper.map(userDto, User.class);
 
         userService.delete(user);

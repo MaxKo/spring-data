@@ -86,8 +86,8 @@ public class RestUserManagementTest {
 
     @Test
     public void UserNotFoundTest() {
-        final Response response = RestAssured.given()
-                .get(API_ROOT + "/users/2");
+        Response response = RestAssured.given()
+                .get("/users/2");
 
         assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
     }
@@ -100,7 +100,6 @@ public class RestUserManagementTest {
 
         assertEquals(HttpStatus.BAD_REQUEST.value(), response.getStatusCode());
     }
-
 
     private User createRandomUser() {
         User user = new User();
