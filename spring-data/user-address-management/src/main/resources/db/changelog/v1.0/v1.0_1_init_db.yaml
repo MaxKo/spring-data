@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      validCheckSum: ANY
+      id: 1.0.1
+      author: m.kovieshnikov
+      changes:
+        - sqlFile:
+            dbms: mysql
+            path: db/changelog/v1.0/sql/init_db.sql

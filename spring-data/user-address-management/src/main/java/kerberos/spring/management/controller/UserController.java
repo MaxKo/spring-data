@@ -40,7 +40,7 @@ public class UserController {
         return ResponseEntity.ok(js.toJson(userDto));
     }
 
-    @GetMapping(value = "/users",  produces = "application/json; charset=UTF-8")
+    @GetMapping(value = "/users",  produces = "application/json;")
     public ResponseEntity<String>  getAllUsers() throws JsonProcessingException {
         List<UserDto> result = new ArrayList<UserDto>();
 

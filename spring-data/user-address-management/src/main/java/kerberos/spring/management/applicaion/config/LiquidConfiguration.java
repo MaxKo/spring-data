@@ -10,7 +10,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-public class LiquidConf {
+public class LiquidConfiguration {
 
     @Autowired
     private Environment env;
@@ -19,20 +19,24 @@ public class LiquidConf {
     @Bean
     public SpringLiquibase liquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog("classpath:liquibase-changeLog.xml");
+        //liquibase.setChangeLog("classpath:liquibase-changeLog.xml");
+        liquibase.setChangeLog("classpath:db/changelog/v1.0/db.changelog-master.yaml");
+        //liquibase.setChangeLog(
+          //      "D:/Development/Git/GitHub/spring-data/user-address-management/src/main/resources/db.changelog/v1.0/db.changelog-master.yaml");
+
+        //liquibase.set
         liquibase.setDataSource(dataSource());
+
         return liquibase;
     }
 
     @Bean
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(env.getProperty("jdbc.url"));
-        dataSource.setUsername(env.getProperty("jdbc.user"));
-        dataSource.setPassword(env.getProperty("jdbc.pass"));
-
-       // org.hibernate.dialect.MySQL8Dialect
+        dataSource.setDriverClassName(env.getProperty("spring.datasource.driverClassName"));
+        dataSource.setUrl(env.getProperty("spring.datasource.url"));
+        dataSource.setUsername(env.getProperty("spring.datasource.username"));
+        dataSource.setPassword(env.getProperty("spring.datasource.password"));
 
         return dataSource;
     }

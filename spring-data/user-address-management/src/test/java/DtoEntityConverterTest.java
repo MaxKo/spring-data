@@ -9,16 +9,16 @@ import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(SpringRunner.class)
 public class DtoEntityConverterTest {
     MapperFactory mapperFactory;
 
-    //CustomMapper<User, UserDto> customMapper;
-
     class UserCustomMapper extends CustomMapper<User, UserDto> {
-
     }
 
     @Before

@@ -13,14 +13,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 
-
-@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = {ClientConfig.class}, loader = AnnotationConfigContextLoader.class)
-//@WebIntegrationTest(randomPort=true)
-//@SpringApplicationConfiguration(UserAddressManagementApplication.class)
 @SpringBootTest(classes = { UserAddressManagementApplication.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 
+@RunWith(SpringRunner.class)
 public class RestClientLiveTest {
     public static final String ROOT = "http://localhost:8080/";
     public static final String API_ROOT = ROOT + "api";
