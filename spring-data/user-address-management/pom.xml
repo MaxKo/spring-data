@@ -2,50 +2,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>spring-data</artifactId>
         <groupId>kerberos.spring</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
     <groupId>kerberos.spring.management.user</groupId>
     <artifactId>user-address-management</artifactId>
-
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.4.7.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-rest-webmvc</artifactId>
-            <version>3.2.0.RELEASE</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -54,49 +31,18 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.10</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.0</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -123,40 +69,41 @@
             <artifactId>orika-core</artifactId>
             <version>${orika-core.version}</version>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.18</version>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <version>3.8.0</version>
+            <version>${liquibase-core.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-csv</artifactId>
-            <version>2.10.0</version>
-        </dependency>
-
-        
     	<dependency>
     		<groupId>org.liquibase</groupId>
     		<artifactId>liquibase-maven-plugin</artifactId>
-    		<version>3.8.0</version>
+    		<version>${liquibase-maven-plugin.version}</version>
 	    </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.6</version>
+            <version>${commons-io.version}</version>
         </dependency>
     </dependencies>
     <properties>
         <orika-core.version>1.5.0</orika-core.version>
-        <liquibase.version>3.6.1</liquibase.version>
+        <liquibase-maven-plugin.version>3.8.0</liquibase-maven-plugin.version>
+        <commons-io.version>2.6</commons-io.version>
+        <spring-data-rest-webmvc.version>3.2.0.RELEASE</spring-data-rest-webmvc.version>
+        <lombok.version>1.18.10</lombok.version>
+        <log4j.version>1.2.17</log4j.version>
+        <commons-lang3.version>3.0</commons-lang3.version>
+        <mysql-connector-java.version>8.0.18</mysql-connector-java.version>
+        <liquibase-core.version>3.8.0</liquibase-core.version>
+        <liquibase-hibernate4.2.version>3.5</liquibase-hibernate4.2.version>
+        <spring-beans.version>5.1.9.RELEASE</spring-beans.version>
+        <spring-data-jpa.version>2.1.10.RELEASE</spring-data-jpa.version>
+        <maven-compiler-plugin.compilerVersion>1.8</maven-compiler-plugin.compilerVersion>
     </properties>
     <build>
         <plugins>
@@ -164,8 +111,7 @@
             <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.8.0</version>
-
+                <version>${liquibase-maven-plugin.version}</version>
                 <configuration>
                     <propertyFile>src/main/resources/liquibase.properties</propertyFile>
                 </configuration>
@@ -173,35 +119,29 @@
                     <dependency>
                         <groupId>org.liquibase.ext</groupId>
                         <artifactId>liquibase-hibernate4.2</artifactId>
-                        <version>3.5</version>
+                        <version>${liquibase-hibernate4.2.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.springframework</groupId>
                         <artifactId>spring-beans</artifactId>
-                        <version>5.1.9.RELEASE</version>
+                        <version>${spring-beans.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.springframework.data</groupId>
                         <artifactId>spring-data-jpa</artifactId>
-                        <version>2.1.10.RELEASE</version>
+                        <version>${spring-data-jpa.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
-
-
-
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <compilerVersion>1.8</compilerVersion>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <compilerVersion>${maven-compiler-plugin.compilerVersion}</compilerVersion>
+                    <source>${maven-compiler-plugin.compilerVersion}</source>
+                    <target>${maven-compiler-plugin.compilerVersion}</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-
 </project>
