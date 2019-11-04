@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 public class AddressDto {
 
+    private String id;
+
     @JsonBackReference
     private UserDto user;
 
@@ -46,5 +48,18 @@ public class AddressDto {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        String result = "AddressDto[";
+
+        result += "id:" + id;
+        result += ", address:" + address;
+        result += ", country: " + country;
+        result += ", userId:" + ((user != null) ? user.getId() : "none");
+        result += "]";
+
+        return result;
     }
 }

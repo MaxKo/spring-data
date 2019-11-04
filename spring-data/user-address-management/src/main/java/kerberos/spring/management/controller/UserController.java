@@ -1,7 +1,7 @@
 package kerberos.spring.management.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import kerberos.spring.management.applicaion.config.JsonSerializer;
+import kerberos.spring.management.config.JsonSerializer;
 import kerberos.spring.management.controller.exception.UserNotFoundException;
 import kerberos.spring.management.dto.UserDto;
 import kerberos.spring.management.entity.User;
@@ -24,7 +24,6 @@ public class UserController {
     private UserService userService;
 
     @Autowired(required = true)
-    @Qualifier("user")
     private MapperFacade mapper;
 
     @Autowired(required = true)
@@ -57,7 +56,9 @@ public class UserController {
 
         UserDto savedDtoUser = mapper.map(savedUser, UserDto.class);
 
-        return new ResponseEntity (js.toJson(savedDtoUser), HttpStatus.CREATED);
+        String response = js.toJson(savedDtoUser);
+
+        return new ResponseEntity (response, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/user")

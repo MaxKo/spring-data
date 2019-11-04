@@ -1,4 +1,4 @@
-package kerberos.spring.management.applicaion.config;
+package kerberos.spring.management.config;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;

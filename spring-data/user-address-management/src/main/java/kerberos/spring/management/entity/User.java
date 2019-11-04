@@ -1,12 +1,11 @@
 package kerberos.spring.management.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,7 +17,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
-    private Date birthDate;
+    private LocalDateTime birthDate;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
@@ -36,21 +35,21 @@ public class User {
     }
 
 
-    public Date getBirthDate() {
+    public LocalDateTime getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDateTime birthDate) {
         this.birthDate = birthDate;
     }
 
     @Override
     public String toString() {
-        String result = "User [id=" + id + ", username=" + username;
+        String result = "User [id=" + id + ", username=" + username + ", birthDate=" + birthDate;
 
         result += ", addresses [ "
                 + addresses.stream()
-                .map(a -> String.valueOf(a.toString()))
+                .map(a -> a.toString())
                 .collect(Collectors.joining(",")) + "]";
 
         return result + "]";

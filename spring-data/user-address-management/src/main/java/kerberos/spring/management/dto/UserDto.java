@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserDto {
-    private Long id;
+    private String id;
     private String username;
 
     private String birthDate;
@@ -17,7 +18,7 @@ public class UserDto {
 
     public UserDto() {}
 
-    public UserDto(Long id, String username) {
+    public UserDto(String id, String username) {
         this.id = id;
         this.username = username;
     }
@@ -30,11 +31,11 @@ public class UserDto {
         this.birthDate = birthDate;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -52,5 +53,20 @@ public class UserDto {
 
     public void setAddresses(List<AddressDto> addresses) {
         this.addresses = addresses;
+    }
+
+    @Override
+    public String toString() {
+        String result = "UserDto[";
+
+        result += "id:" + id;
+        result += ", username:" + username;
+        result += ", birthdate: " + ((birthDate != null) ? birthDate : "");
+        result += ", addresses: [";
+        result += (addresses != null) ? addresses.stream().map(a -> a.toString()).collect( Collectors.joining( "," )) : "";
+        result += "]";
+        result += "]";
+
+        return result;
     }
 }

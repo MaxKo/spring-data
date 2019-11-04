@@ -1,7 +1,6 @@
 package kerberos.spring.management.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 

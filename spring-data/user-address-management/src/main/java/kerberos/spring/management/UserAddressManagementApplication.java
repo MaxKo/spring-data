@@ -1,18 +1,18 @@
 package kerberos.spring.management;
 
-import kerberos.spring.management.repository.UserRepository;
 import kerberos.spring.management.entity.Address;
 import kerberos.spring.management.entity.User;
+import kerberos.spring.management.repository.UserRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Locale;
 import java.util.Random;
 import java.util.stream.Stream;
@@ -36,7 +36,7 @@ public class UserAddressManagementApplication {
             Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
 
                 User user = new User(name);
-
+                user.setBirthDate(generateRandomBirthDate());
                 new Random().ints()
                         .limit(2 + new Random().nextInt(7))
                         .forEach(i -> {
@@ -58,4 +58,12 @@ public class UserAddressManagementApplication {
         };
     }
 
+    private LocalDateTime generateRandomBirthDate() {
+        Random random = new Random();
+        int minDay = (int) LocalDate.of(1900, 1, 1).toEpochDay();
+        int maxDay = (int) LocalDate.of(2015, 1, 1).toEpochDay();
+        long randomDay = minDay + random.nextInt(maxDay - minDay);
+
+        return  LocalDateTime.of(LocalDate.ofEpochDay(randomDay), LocalTime.NOON);
+    }
 }

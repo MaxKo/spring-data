@@ -11,10 +11,6 @@ import java.util.List;
 
 @Repository
 public interface AddressRepository  extends JpaRepository<Address, Long> {
-
     @Query("SELECT a FROM Address a WHERE a.user.id = ?1")
     List<Address> getAddressesBy(Long userId);
-
-    @Query("SELECT a FROM Address a WHERE a.user = ?1")
-    List<Address> getAddressesBy(User user);
 }

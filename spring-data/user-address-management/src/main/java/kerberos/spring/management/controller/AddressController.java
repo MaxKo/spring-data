@@ -1,6 +1,6 @@
 package kerberos.spring.management.controller;
 
-import kerberos.spring.management.applicaion.config.JsonSerializer;
+import kerberos.spring.management.config.JsonSerializer;
 import kerberos.spring.management.controller.exception.UserNotFoundException;
 import kerberos.spring.management.dto.AddressDto;
 import kerberos.spring.management.entity.Address;
@@ -29,7 +29,6 @@ public class AddressController {
     private UserService userService;
 
     @Autowired
-    @Qualifier("address")
     private MapperFacade mapper;
 
     @Autowired(required = true)
