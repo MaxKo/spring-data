@@ -2,12 +2,15 @@ package kerberos.spring.management.dto;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDto {
     private Long id;
     private String username;
+
+    private String birthDate;
 
     @JsonManagedReference
     private List<AddressDto> addresses = new ArrayList<AddressDto>();
@@ -17,6 +20,14 @@ public class UserDto {
     public UserDto(Long id, String username) {
         this.id = id;
         this.username = username;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public Long getId() {

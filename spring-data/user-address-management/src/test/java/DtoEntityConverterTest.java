@@ -6,11 +6,17 @@ import kerberos.spring.management.entity.User;
 import ma.glasnost.orika.CustomMapper;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.MappingContext;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,6 +25,33 @@ public class DtoEntityConverterTest {
     MapperFactory mapperFactory;
 
     class UserCustomMapper extends CustomMapper<User, UserDto> {
+
+        @Override
+        public void mapAtoB(User user, UserDto userDto, MappingContext context) {
+            super.mapAtoB(user, userDto, context);
+            Date date = user.getBirthDate();
+
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            String isoDate = format.format(date);
+            userDto.setBirthDate(isoDate);
+        }
+
+
+        @Override
+        public void mapBtoA(UserDto userDto, User user, MappingContext context) {
+            super.mapBtoA(userDto, user, context);
+
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            Date date = null;
+            try {
+                date = format.parse(userDto.getBirthDate());
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            user.setBirthDate(date);
+        }
     }
 
     @Before

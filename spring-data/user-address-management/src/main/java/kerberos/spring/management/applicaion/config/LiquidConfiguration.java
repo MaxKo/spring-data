@@ -12,19 +12,20 @@ import javax.sql.DataSource;
 @Configuration
 public class LiquidConfiguration {
 
+    public static final String CLASSPATH_DB_CHANGELOG_V_1_0_DB_CHANGELOG_MASTER_YAML = "classpath:db/changelog/v1.0/db.changelog-master.yaml";
+    public static final String SPRING_DATASOURCE_DRIVER_CLASS_NAME = "spring.datasource.driverClassName";
+    public static final String SPRING_DATASOURCE_URL = "spring.datasource.url";
+    public static final String SPRING_DATASOURCE_USERNAME = "spring.datasource.username";
+    public static final String SPRING_DATASOURCE_PASSWORD = "spring.datasource.password";
+
     @Autowired
-    private Environment env;
+    private Environment environment;
 
 
     @Bean
     public SpringLiquibase liquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
-        //liquibase.setChangeLog("classpath:liquibase-changeLog.xml");
-        liquibase.setChangeLog("classpath:db/changelog/v1.0/db.changelog-master.yaml");
-        //liquibase.setChangeLog(
-          //      "D:/Development/Git/GitHub/spring-data/user-address-management/src/main/resources/db.changelog/v1.0/db.changelog-master.yaml");
-
-        //liquibase.set
+        liquibase.setChangeLog(CLASSPATH_DB_CHANGELOG_V_1_0_DB_CHANGELOG_MASTER_YAML);
         liquibase.setDataSource(dataSource());
 
         return liquibase;
@@ -33,10 +34,11 @@ public class LiquidConfiguration {
     @Bean
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getProperty("spring.datasource.driverClassName"));
-        dataSource.setUrl(env.getProperty("spring.datasource.url"));
-        dataSource.setUsername(env.getProperty("spring.datasource.username"));
-        dataSource.setPassword(env.getProperty("spring.datasource.password"));
+
+        dataSource.setDriverClassName(environment.getProperty(SPRING_DATASOURCE_DRIVER_CLASS_NAME));
+        dataSource.setUrl(environment.getProperty(SPRING_DATASOURCE_URL));
+        dataSource.setUsername(environment.getProperty(SPRING_DATASOURCE_USERNAME));
+        dataSource.setPassword(environment.getProperty(SPRING_DATASOURCE_PASSWORD));
 
         return dataSource;
     }

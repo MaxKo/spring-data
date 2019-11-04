@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      validCheckSum: ANY
+      id: 1.0.2
+      author: m.kovieshnikov
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: birth_date
+                  type: DATETIME
