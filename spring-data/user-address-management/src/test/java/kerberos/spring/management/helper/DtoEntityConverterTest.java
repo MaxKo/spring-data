@@ -6,6 +6,7 @@ import kerberos.spring.management.dto.UserDto;
 import kerberos.spring.management.entity.Address;
 import kerberos.spring.management.entity.User;
 import ma.glasnost.orika.MapperFacade;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,16 +104,23 @@ public class DtoEntityConverterTest {
 
         User user =  mapper.map(userDto, User.class);
 
+        assertEquals(java.util.Optional.of(25L), java.util.Optional.of(user.getId()));
+
+        assertEquals(2019, user.getBirthDate().getYear());
+        assertEquals(11, user.getBirthDate().getMonthValue());
+
         System.out.println(user);
     }
 
     @Test
     public void customDataMapperToDto() {
         User user = new User(1, "John");
-        user.setBirthDate(LocalDateTime.now());
+
+        user.setBirthDate(LocalDateTime.of(1980, 11, 10, 20, 11, 0));
 
         UserDto userDto =  mapper.map(user, UserDto.class);
 
         System.out.println(userDto);
+        assertEquals("1980-11-10 20:11:00", userDto.getBirthDate());
     }
 }
