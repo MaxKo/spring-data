@@ -1,7 +1,9 @@
 package kerberos.spring.management.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Data;
 
+@Data
 public class AddressDto {
 
     private String id;
@@ -23,30 +25,6 @@ public class AddressDto {
 
     public AddressDto(String address, String country) {
         this.address = address;
-        this.country = country;
-    }
-
-    public UserDto getUser() {
-        return user;
-    }
-
-    public void setUser(UserDto user) {
-        this.user = user;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
         this.country = country;
     }
 

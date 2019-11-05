@@ -54,7 +54,6 @@ public class RestUserManagementTest {
 
         assertEquals(HttpStatus.CREATED.value(), response.getStatusCode());
 
-
         System.out.println(  IOUtils.toString(new ByteArrayInputStream(response.getBody().asByteArray()), StandardCharsets.UTF_8)  );// .htmlPath() .jsonPath() (("$.id") .as(UserDto.class);
         UserDto savedUser = response.getBody().as(UserDto.class);
 
@@ -69,7 +68,6 @@ public class RestUserManagementTest {
 
     @Test
     public void UserListSizeChangedWhenUserCreated() {
-
         final Response responseBeforeUsers = RestAssured.given()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .get(getApiURI() + "/users");
