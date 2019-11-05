@@ -6,7 +6,6 @@ import kerberos.spring.management.dto.UserDto;
 import kerberos.spring.management.entity.Address;
 import kerberos.spring.management.entity.User;
 import ma.glasnost.orika.MapperFacade;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
