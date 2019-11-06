@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
@@ -30,7 +31,7 @@ public class UserAddressManagementApplication {
 
     @Bean
     CommandLineRunner init(UserRepository userRepository) {
-        if (userRepository.findAll().size() > 0) return args -> {};
+       if (userRepository.findAll().size() > 0) return args -> {};
 
         return args -> {
             Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {

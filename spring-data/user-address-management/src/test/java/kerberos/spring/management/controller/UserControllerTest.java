@@ -90,5 +90,5 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.username").value(user.getUsername()));;
     }
 
-    private User getSingleUser() {return userRepository.findAll().stream().findFirst().get();}
+    private User getSingleUser() {return  userRepository.findAll().stream().findFirst().get(); }
 }
