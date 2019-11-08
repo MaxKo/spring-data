@@ -17,6 +17,7 @@
     </parent>
     <modules>
         <module>user-address-management</module>
+        <module>threads</module>
     </modules>
     <dependencyManagement>
         <dependencies>
