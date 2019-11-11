@@ -2,7 +2,6 @@ package com.kerberos.threads.webclient.data;
 
 import com.kerberos.threads.client.WebMessage;
 import com.kerberos.threads.webclient.WebClientApplication;
-import com.kerberos.threads.webclient.WebClientController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +10,6 @@ import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWeb
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.reactive.server.EntityExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.time.Duration;
@@ -19,7 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, classes = WebClientApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = WebClientApplication.class)
 public class DataWebDataControllerIntegrationTest {
 
     @LocalServerPort
@@ -29,11 +27,11 @@ public class DataWebDataControllerIntegrationTest {
     private WebTestClient testClient;
 
     @Autowired
-    private WebClientController webClientController;
+    private WebDataController webDataController;
 
     @Before
     public void setup() {
-        webClientController.setServerPort(randomServerPort);
+        webDataController.setServerPort(randomServerPort);
     }
 
     @Test

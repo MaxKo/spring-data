@@ -1,11 +1,9 @@
 package com.kerberos.threads.webclient.data;
 
 import com.kerberos.threads.client.WebMessage;
-import com.kerberos.threads.webclient.Tweet;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;

@@ -43,7 +43,7 @@ public class MessageFactory implements Supplier<WebMessage> {
 
         log.log(Level.ALL, "MessageFactory:" + messageContent);
 
-        return new WebMessage(messageContent, ldt);
+        return new WebMessage(counter, messageContent, ldt);
     }
 
     public int getCounter() {
