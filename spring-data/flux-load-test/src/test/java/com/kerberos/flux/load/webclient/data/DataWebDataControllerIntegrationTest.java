@@ -2,6 +2,7 @@ package com.kerberos.threads.webclient.data;
 
 import com.kerberos.threads.client.WebMessage;
 import com.kerberos.threads.webclient.WebClientApplication;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +15,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = WebClientApplication.class)
@@ -118,7 +120,7 @@ public class DataWebDataControllerIntegrationTest {
         int amount = 1000;
         LocalDateTime ldtStart = LocalDateTime.now();
 
-        List<WebMessage> resp = testClient.get()
+        List<WebMessage> webMessages = testClient.get()
                 .uri("/data-by-amount-non-blocking?amount=" + amount)
                 .exchange()
                 .expectStatus()
@@ -128,8 +130,32 @@ public class DataWebDataControllerIntegrationTest {
                 .returnResult()
                 .getResponseBody();
 
-        resp.stream().forEach(System.out::println);
+        webMessages.stream().forEach(System.out::println);
 
         System.out.println("Duration of: " + amount + " is " + Duration.between(ldtStart, LocalDateTime.now()));
+
+        List<WebMessage> duplicates = getDuplicates(webMessages);
+
+        Assert.assertEquals(0, duplicates.size());
+    }
+
+    public static List<WebMessage> getDuplicates(final List<WebMessage> webMessages) {
+        return getDuplicatesMap(webMessages).values().stream()
+                .filter(duplicates -> duplicates.size() > 1)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+    }
+
+    private static Map<Integer, List<WebMessage>> getDuplicatesMap(List<WebMessage> webMessages) {
+        return webMessages.stream().collect(Collectors.groupingBy(DataWebDataControllerIntegrationTest::uniqueAttributes));
+    }
+
+
+    private static int uniqueAttributes(WebMessage message){
+        if(Objects.isNull(message)){
+            return -1;
+        }
+
+        return (message.getId());
     }
 }
