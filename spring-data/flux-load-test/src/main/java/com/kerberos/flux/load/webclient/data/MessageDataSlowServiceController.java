@@ -1,6 +1,6 @@
-package com.kerberos.threads.webclient.data;
+package com.kerberos.flux.load.webclient.data;
 
-import com.kerberos.threads.client.WebMessage;
+import com.kerberos.flux.load.client.WebMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

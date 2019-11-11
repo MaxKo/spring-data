@@ -1,7 +1,5 @@
-package com.kerberos.threads.client;
+package com.kerberos.flux.load.client;
 
-import com.kerberos.threads.webclient.data.MessageFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

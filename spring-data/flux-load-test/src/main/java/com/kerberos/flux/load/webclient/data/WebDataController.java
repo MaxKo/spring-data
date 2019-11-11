@@ -1,6 +1,6 @@
-package com.kerberos.threads.webclient.data;
+package com.kerberos.flux.load.webclient.data;
 
-import com.kerberos.threads.client.WebMessage;
+import com.kerberos.flux.load.client.WebMessage;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

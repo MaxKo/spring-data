@@ -1,8 +1,8 @@
-package com.kerberos.threads.controller;
+package com.kerberos.flux.load.controller;
 
-import com.kerberos.threads.ThreadsApplication;
-import com.kerberos.threads.client.StringMessageFactory;
-import com.kerberos.threads.client.RestClient;
+import com.kerberos.thread.ThreadsApplication;
+import com.kerberos.flux.load.client.StringMessageFactory;
+import com.kerberos.flux.load.client.RestClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

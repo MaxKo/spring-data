@@ -1,4 +1,4 @@
-package com.kerberos.threads.client;
+package com.kerberos.flux.load.client;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.kerberos.threads.controller;
+package com.kerberos.flux.load.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

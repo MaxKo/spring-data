@@ -1,5 +1,6 @@
-package com.kerberos.flux.load.webclient;
+package com.kerberos.deffered;
 
+import com.kerberos.flux.load.webclient.WebClientApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -9,16 +10,16 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @SpringBootApplication
 @EnableWebFluxSecurity
-public class WebClientApplication {
+public class DefferedWebApp {
     public static void main(String[] args) {
-        SpringApplication.run(WebClientApplication.class, args);
+        SpringApplication.run(DefferedWebApp.class, args);
     }
-    
+
     @Bean
     public SecurityWebFilterChain functionalValidationsSpringSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
-            .anyExchange()
-            .permitAll();
+                .anyExchange()
+                .permitAll();
         http.csrf().disable();
 
         return http.build();

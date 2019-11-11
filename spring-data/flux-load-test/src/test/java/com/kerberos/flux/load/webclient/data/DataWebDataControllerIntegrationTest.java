@@ -1,7 +1,7 @@
-package com.kerberos.threads.webclient.data;
+package com.kerberos.flux.load.webclient.data;
 
-import com.kerberos.threads.client.WebMessage;
-import com.kerberos.threads.webclient.WebClientApplication;
+import com.kerberos.flux.load.client.WebMessage;
+import com.kerberos.flux.load.webclient.WebClientApplication;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

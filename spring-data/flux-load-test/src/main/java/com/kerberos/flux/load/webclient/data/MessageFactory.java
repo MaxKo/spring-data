@@ -1,6 +1,6 @@
-package com.kerberos.threads.webclient.data;
+package com.kerberos.flux.load.webclient.data;
 
-import com.kerberos.threads.client.WebMessage;
+import com.kerberos.flux.load.client.WebMessage;
 import lombok.extern.java.Log;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.function.Supplier;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Component
 @Scope("singleton")
