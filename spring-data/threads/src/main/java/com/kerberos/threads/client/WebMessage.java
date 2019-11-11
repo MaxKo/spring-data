@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class WebMessage {
+    int id;
     String content;
     LocalDateTime date;
 

@@ -20,6 +20,7 @@ public class WebClientApplication {
             .anyExchange()
             .permitAll();
         http.csrf().disable();
+
         return http.build();
     }
 }
