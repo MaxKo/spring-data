@@ -1,0 +1,25 @@
+version: "3"
+services:
+  user-management:
+    image: user-management-img
+    ports:
+      - "8080:8080"
+    networks:
+      - user-management
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:8
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./init.sql:/data/application/init.sql
+    networks:
+      - user-management
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=demo
+
+networks:
+  user-management:

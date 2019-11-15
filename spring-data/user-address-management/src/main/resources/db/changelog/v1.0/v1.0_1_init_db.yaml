@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      validCheckSum: ANY
+      id: 1.0.1
+      author: m.kovieshnikov
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            path: db/changelog/v1.0/sql/init_postgres_db.sql
