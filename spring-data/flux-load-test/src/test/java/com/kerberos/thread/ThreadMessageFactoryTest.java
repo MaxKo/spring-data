@@ -1,6 +1,9 @@
 package com.kerberos.thread;
 
+<<<<<<< HEAD
 import io.netty.channel.EventLoop;
+=======
+>>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -63,6 +66,10 @@ public class ThreadMessageFactoryTest {
         Thread.sleep(10000);
 
         int amount = 1000;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
         int amBefore = tmf.getCounter();
 
         Flux.range(0, amount)

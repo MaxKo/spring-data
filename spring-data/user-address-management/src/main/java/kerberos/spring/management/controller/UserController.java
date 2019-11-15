@@ -1,7 +1,11 @@
 package kerberos.spring.management.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+<<<<<<< HEAD
 import kerberos.spring.management.config.JsonSerializerBean;
+=======
+import kerberos.spring.management.config.JsonSerializer;
+>>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
 import kerberos.spring.management.controller.exception.UserNotFoundException;
 import kerberos.spring.management.dto.UserDto;
 import kerberos.spring.management.entity.User;
@@ -26,7 +30,11 @@ public class UserController {
     private MapperFacade mapper;
 
     @Autowired(required = true)
+<<<<<<< HEAD
     private JsonSerializerBean js;
+=======
+    private JsonSerializer js;
+>>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<String> getCustomerById(@PathVariable final Long userId) throws JsonProcessingException {
@@ -57,7 +65,11 @@ public class UserController {
 
         String response = js.toJson(savedDtoUser);
 
+<<<<<<< HEAD
         return new ResponseEntity<String> (response, HttpStatus.CREATED);
+=======
+        return new ResponseEntity (response, HttpStatus.CREATED);
+>>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
     }
 
     @DeleteMapping("/user")
@@ -67,6 +79,9 @@ public class UserController {
 
         userService.delete(user);
     }
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
 }

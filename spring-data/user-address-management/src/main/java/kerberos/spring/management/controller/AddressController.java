@@ -1,6 +1,10 @@
 package kerberos.spring.management.controller;
 
+<<<<<<< HEAD
 import kerberos.spring.management.config.JsonSerializerBean;
+=======
+import kerberos.spring.management.config.JsonSerializer;
+>>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
 import kerberos.spring.management.controller.exception.UserNotFoundException;
 import kerberos.spring.management.dto.AddressDto;
 import kerberos.spring.management.entity.Address;
@@ -31,7 +35,11 @@ public class AddressController {
     private MapperFacade mapper;
 
     @Autowired(required = true)
+<<<<<<< HEAD
     private JsonSerializerBean js;
+=======
+    private JsonSerializer js;
+>>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
 
     @GetMapping("/address/{addressId}")
     public ResponseEntity<String> getAddressById(@PathVariable final Long addressId) {

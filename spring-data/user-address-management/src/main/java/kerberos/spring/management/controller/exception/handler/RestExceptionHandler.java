@@ -1,5 +1,9 @@
 package kerberos.spring.management.controller.exception.handler;
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
 import kerberos.spring.management.controller.exception.UserIdMismatchException;
 import kerberos.spring.management.controller.exception.UserNotFoundException;
 import org.hibernate.exception.ConstraintViolationException;
@@ -39,4 +43,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .getLocalizedMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 }
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
