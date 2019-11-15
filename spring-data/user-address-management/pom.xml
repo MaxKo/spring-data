@@ -16,7 +16,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-<<<<<<< HEAD
         <!--  
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,13 +49,6 @@
 		</dependency>
          
         
-        
-=======
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-rest</artifactId>
-        </dependency>
->>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -97,7 +89,6 @@
             <artifactId>orika-core</artifactId>
             <version>${orika-core.version}</version>
         </dependency>
-<<<<<<< HEAD
         <!-- <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -108,13 +99,6 @@
     		<artifactId>postgresql</artifactId>
     		<version>42.2.8</version>
 		</dependency>
-=======
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
-        </dependency>
->>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
@@ -129,7 +113,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
-<<<<<<< HEAD
         </dependency>  
         
         
@@ -156,30 +139,6 @@
 			<artifactId>spring-plugin-core</artifactId>
 			<version>1.2.0.RELEASE</version>
 		</dependency>  
-    
-         <!--  
-        <dependency>
-			<groupId>org.springframework.plugin</groupId>
-			<artifactId>spring-plugin-core</artifactId>
-			<version>2.0.0.RELEASE</version>
-		</dependency>    
-    
-		  <dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger2</artifactId>
-		    <version>3.0.0-SNAPSHOT</version>
-		  </dependency>
-		  <dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger-ui</artifactId>
-		    <version>3.0.0-SNAPSHOT</version>
-		  </dependency>
-		  <dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-data-rest</artifactId>
-		    <version>3.0.0-SNAPSHOT</version>
-		  </dependency>
-    -->
     </dependencies>
     
     <!-- 
@@ -192,12 +151,6 @@
 		</repositories> -->
     <properties>
 	    <spring.fox.version>2.9.2</spring.fox.version>
-	    <!--spring.fox.version>2.7.0</spring.fox.version-->
-=======
-        </dependency>
-    </dependencies>
-    <properties>
->>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
         <orika-core.version>1.5.0</orika-core.version>
         <liquibase-maven-plugin.version>3.8.0</liquibase-maven-plugin.version>
         <commons-io.version>2.6</commons-io.version>

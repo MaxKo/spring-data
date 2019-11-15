@@ -5,10 +5,5 @@ databaseChangeLog:
       author: m.kovieshnikov
       changes:
         - sqlFile:
-<<<<<<< HEAD
             dbms: postgresql
             path: db/changelog/v1.0/sql/init_postgres_db.sql
-=======
-            dbms: mysql
-            path: db/changelog/v1.0/sql/init_db.sql
->>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd

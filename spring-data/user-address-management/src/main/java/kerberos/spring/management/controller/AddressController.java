@@ -1,24 +1,25 @@
 package kerberos.spring.management.controller;
 
-<<<<<<< HEAD
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import kerberos.spring.management.config.JsonSerializerBean;
-=======
-import kerberos.spring.management.config.JsonSerializer;
->>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
 import kerberos.spring.management.controller.exception.UserNotFoundException;
 import kerberos.spring.management.dto.AddressDto;
 import kerberos.spring.management.entity.Address;
 import kerberos.spring.management.service.AddressService;
 import kerberos.spring.management.service.UserService;
 import ma.glasnost.orika.MapperFacade;
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -35,11 +36,7 @@ public class AddressController {
     private MapperFacade mapper;
 
     @Autowired(required = true)
-<<<<<<< HEAD
     private JsonSerializerBean js;
-=======
-    private JsonSerializer js;
->>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
 
     @GetMapping("/address/{addressId}")
     public ResponseEntity<String> getAddressById(@PathVariable final Long addressId) {

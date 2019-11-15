@@ -30,18 +30,7 @@ public class LiquidConfiguration {
 
         return liquibase;
     }
-<<<<<<< HEAD
-    /*
-    @Bean
-    public SpringLiquibase liquibase() {
-      SpringLiquibase liquibase = new SpringLiquibase();
-      liquibase.setShouldRun(false);
-      return liquibase;
-    }
-*/  
-=======
 
->>>>>>> 9c6ed6c4d06f7eda245225e4a71e04fcbc3028cd
     @Bean
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
