@@ -153,7 +153,7 @@
 	    <spring.fox.version>2.9.2</spring.fox.version>
         <orika-core.version>1.5.0</orika-core.version>
         <liquibase-maven-plugin.version>3.8.0</liquibase-maven-plugin.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <spring-data-rest-webmvc.version>3.2.0.RELEASE</spring-data-rest-webmvc.version>
         <lombok.version>1.18.10</lombok.version>
         <log4j.version>1.2.17</log4j.version>
