@@ -161,7 +161,7 @@
         <mysql-connector-java.version>8.0.18</mysql-connector-java.version>
         <liquibase-core.version>3.8.0</liquibase-core.version>
         <liquibase-hibernate4.2.version>3.5</liquibase-hibernate4.2.version>
-        <spring-beans.version>5.1.9.RELEASE</spring-beans.version>
+        <spring-beans.version>5.3.18</spring-beans.version>
         <spring-data-jpa.version>2.1.10.RELEASE</spring-data-jpa.version>
         <maven-compiler-plugin.compilerVersion>1.8</maven-compiler-plugin.compilerVersion>
     </properties>
